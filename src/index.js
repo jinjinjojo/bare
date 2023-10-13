@@ -1,6 +1,4 @@
 import { createBareServer } from "@tomphttp/bare-server-node";
-import { uvPath } from "@titaniumnetwork-dev/ultraviolet";
-import { gamesPath } from "@amethystnetwork-dev/incognito-gfiles";
 
 import { fileURLToPath } from "node:url";
 import { createServer as createHttpsServer } from "node:https";
