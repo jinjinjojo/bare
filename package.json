@@ -19,14 +19,6 @@
     "type": "git",
     "url": "git+https://github.com/amethystnetwork-dev/Incognito"
   },
-  "keywords": [
-    "unoffical",
-    "ultraviolet",
-    "unblock",
-    "titaniumnetwork",
-    "bypass-filter",
-    "amethystnetwork-dev"
-  ],
   "author": "caracal-js and Amethyst Network contributors",
   "license": "GPL-3.0-or-later",
   "dependencies": {
