@@ -17,9 +17,9 @@ import analytics from "./analytics.js";
 console.log("Incognito\nThis program comes with ABSOLUTELY NO WARRANTY.\nThis is free software, and you are welcome to redistribute it\nunder the terms of the GNU General Public License as published by\nthe Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\n\nYou should have received a copy of the GNU General Public License\nalong with this program. If not, see <https://www.gnu.org/licenses/>.\n");
 
 const app = connect();
-const bare = createBareServer("/bare/");
+const bare = createBareServer("/");
 const ssl = existsSync("../ssl/key.pem") && existsSync("../ssl/cert.pem");
-const PORT = process.env.PORT || ssl ? 443 : 8080;
+const PORT = process.env.PORT || ssl ? 443 : 8081;
 const server = ssl ? createHttpsServer({
   key: readFileSync("../ssl/key.pem"),
   cert: readFileSync("../ssl/cert.pem")
@@ -29,12 +29,12 @@ app.use((req, res, next) => {
   if(bare.shouldRoute(req)) bare.routeRequest(req, res); else next();
 });
 
-app.use(serveStatic(fileURLToPath(new URL("../static/", import.meta.url))));
-app.use("/source", serveStatic(gamesPath));
-app.use("/source", serveIndex(gamesPath, { icons: true }));
+// app.use(serveStatic(fileURLToPath(new URL("../static/", import.meta.url))));
+// app.use("/source", serveStatic(gamesPath));
+// app.use("/source", serveIndex(gamesPath, { icons: true }));
 
-app.use("/uv/", serveStatic(uvPath));
-analytics(app);
+// app.use("/uv/", serveStatic(uvPath));
+// analytics(app);
 
 server.on("request", app);
 server.on("upgrade", (req, socket, head) => {
